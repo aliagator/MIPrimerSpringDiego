@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="es">
+<head>
+    <meta charset="UTF-8"> <!--Codificación de caracteres-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--Compatibilidad con Internet Explorer-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Para el Responsive en diferentes dispositivos-->
+    <title>Crear Usuarios</title> <!--Título página WEB-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+<header th:include="~{../static/html/header.html}">
+
+</header>
+<section class="container">
+    <h2 class="text-success"><strong>Crear Usuario</strong></h2>
+    <form th:action="@{/usuario/crearUsuario}" method="post">
+        <div>
+            <label for="nombreUsuario" class="form-label"> Nombre de Usuario:</label>
+            <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" required
+                   placeholder="Ingrese su Nombre">
+        </div>
+        <div>
+            <label for="contrasena" class="form-label"> Ingrese Contraseña:</label>
+            <input type="password" class="form-control" id="contrasena" name="contrasena" required
+                   placeholder="Ingrese una Contraseña">
+        </div>
+        <div>
+            <label for="rol" class="form-label"> Seleccione Usuario</label>
+            <select class="form-control" name="rol" id="rol" required>
+                <option value="Profesor">Profesor</option>
+                <option value="Alumno">Alumno</option>
+                <option value="Administrador">Administrador</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Crear Usuario</button>
+    </form>
+</section>
+
+
+</body>
+</html>
