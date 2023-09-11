@@ -1,4 +1,4 @@
-package cl.awakelab.miprimerspringdiego.service.serviceimpl;
+package cl.awakelab.miprimerspringdiego.service;
 
 import cl.awakelab.miprimerspringdiego.entity.Alumno;
 
@@ -9,5 +9,6 @@ public interface IAlumnoService {
     public Alumno crearAlumno(Alumno alumno);
     public Alumno actualizarAlumno(Alumno alumno);
     public void eliminarAlumno(int idAlumno);
+    public Alumno listarAlumnoId(int idAlumno);
 
 }

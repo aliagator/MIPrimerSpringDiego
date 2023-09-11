@@ -1,4 +1,4 @@
-package cl.awakelab.miprimerspringdiego.service.serviceimpl;
+package cl.awakelab.miprimerspringdiego.service;
 
 import cl.awakelab.miprimerspringdiego.entity.Profesor;
 
@@ -9,4 +9,5 @@ public interface IProfesorService {
     public Profesor crearProfesor(Profesor profesor);
     public Profesor actualizarProfesor(Profesor profesor);
     public void eliminarProfesor(int idProfesor);
+    public Profesor listarProfesorId(int idProfesor);
 }

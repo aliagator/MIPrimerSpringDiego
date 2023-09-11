@@ -11,7 +11,7 @@
     <header th:include="~{../static/html/header.html}">
     </header>
     <section class="container col-12">
-        <a class="btn btn-primary" th:href="@{/usuario/crearUsuario}">Crear Usuario</a>
+        <a class="btn btn-primary" th:href="@{/curso/crearCurso}">Crear Usuario</a>
         <table class="Table">
         <thead>
         <tr>
@@ -21,10 +21,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="usuario: ${atributoListaUsuarios}">
+        <tr th:each="curso: ${atributoListaUsuarios}">
             <td th:text="${usuario.id}"></td>
-            <td th:text="${usuario.nombreUsuario}"></td>
-            <td th:text="${usuario.rol}"></td>
+            <td th:text="${usuario.nombreCurso}"></td>
+            <td th:text="${usuario.listaProfesores}"></td>
             <td>
                 <div class="row m-4">
                     <div class="col-6">

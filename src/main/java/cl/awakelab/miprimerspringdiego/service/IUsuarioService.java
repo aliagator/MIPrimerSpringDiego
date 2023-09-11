@@ -1,4 +1,4 @@
-package cl.awakelab.miprimerspringdiego.service.serviceimpl;
+package cl.awakelab.miprimerspringdiego.service;
 
 import cl.awakelab.miprimerspringdiego.entity.Usuario;
 
@@ -9,5 +9,6 @@ public interface IUsuarioService {
     public Usuario crearUsuario(Usuario usuario);
     public Usuario actualizarUsuario(Usuario usuario);
     public void eliminarUsuario(int idUsuario);
+    public Usuario listarUsuarioId(int idUsuario);
 
 }

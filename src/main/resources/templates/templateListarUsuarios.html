@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8"> <!--Codificación de caracteres-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--Compatibilidad con Internet Explorer-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Para el Responsive en diferentes dispositivos-->
+    <title>Listar Usuarios</title> <!--Título página WEB-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
-$END$
+    <header th:include="~{../static/html/header.html}">
+    </header>
+    <section class="container col-12">
+        <a class="btn btn-primary" th:href="@{/usuario/crearUsuario}">Crear Usuario</a>
+        <table class="Table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE USUARIO</th>
+            <th>ROL</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usuario: ${atributoListaUsuarios}">
+            <td th:text="${usuario.id}"></td>
+            <td th:text="${usuario.nombreUsuario}"></td>
+            <td th:text="${usuario.rol}"></td>
+            <td>
+                <div class="row m-4">
+                    <div class="col-6">
+                        <form th:action="@{/usuario/editarUsuario/{id}(id=${usuario.id})}"
+                              method="get">
+                            <button class="btn btn-warning" type="submit">EDITAR</button>
+                        </form>
+                    </div>
+                    <div class="col-2">
+                        <form th:action="@{/usuario/eliminarUsuario/{id}(id=${usuario.id})}"
+                              method="post">
+                            <button class="btn btn-danger" type="submit">ELIMINAR</button>
+                        </form>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+    </section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>
