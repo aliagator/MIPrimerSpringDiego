@@ -1,7 +1,11 @@
 package cl.awakelab.miprimerspringdiego.controller;
 
+import cl.awakelab.miprimerspringdiego.entity.Alumno;
 import cl.awakelab.miprimerspringdiego.entity.Curso;
+import cl.awakelab.miprimerspringdiego.entity.Profesor;
+import cl.awakelab.miprimerspringdiego.service.IAlumnoService;
 import cl.awakelab.miprimerspringdiego.service.ICursoService;
+import cl.awakelab.miprimerspringdiego.service.IProfesorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

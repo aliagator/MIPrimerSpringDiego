@@ -1,12 +1,15 @@
 package cl.awakelab.miprimerspringdiego.controller;
 
+import cl.awakelab.miprimerspringdiego.entity.Curso;
 import cl.awakelab.miprimerspringdiego.entity.Profesor;
+import cl.awakelab.miprimerspringdiego.service.ICursoService;
 import cl.awakelab.miprimerspringdiego.service.IProfesorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -14,14 +17,18 @@ import java.util.List;
 public class ProfesorController {
     @Autowired
     IProfesorService objProfesorService;
+    @Autowired
+    ICursoService objCursoService;
     @GetMapping
     public String listarProfesores(Model model){
         List<Profesor> listaProfesores = objProfesorService.listarProfesor();
         model.addAttribute("atributoListaProfesores", listaProfesores);
         return "templateListarProfesores";
     }
-    @GetMapping("/crear")//Llama al formulario
-    public String mostrarFormularioCrearProfesor(){
+    @GetMapping("/crearProfesor")//Llama al formulario
+    public String mostrarFormularioCrearProfesor(Model model){
+        List<Curso> listaCursos = objCursoService.listarCurso(); // Obtén la lista de cursos
+        model.addAttribute("listaCursos", listaCursos); // Agrega la lista de cursos al modelo
         return "templateFormularioCrearProfesor";
     }
     @PostMapping("/crearProfesor")
@@ -43,14 +50,23 @@ public class ProfesorController {
             return "redirect:/profesor";
         }
 
+        List<Curso> listaCursos = objCursoService.listarCurso();
+
         model.addAttribute("profesor", profesor);
+        model.addAttribute("listaCursos", listaCursos);
         return "templateFormularioEditarProfesor";
     }
     @PostMapping("/editarProfesor/{id}")
     public String actualizarProfesor(@PathVariable int id, @ModelAttribute Profesor profesor) {
-        // Lógica para actualizar el profesor en la base de datos
-        objProfesorService.actualizarProfesor(profesor);
+        Profesor profesorActualizado = objProfesorService.actualizarProfesor(profesor);
+
+        if (profesorActualizado == null) {
+            // Manejo de error si el profesor no existe o no se pudo actualizar
+            return "redirect:/profesor";
+        }
+
         // Redirecciona a la página de lista de profesores o a donde desees después de la edición
         return "redirect:/profesor";
     }
+
 }

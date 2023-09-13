@@ -4,37 +4,41 @@
     <meta charset="UTF-8"> <!--Codificación de caracteres-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--Compatibilidad con Internet Explorer-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Para el Responsive en diferentes dispositivos-->
-    <title>Listar Usuarios</title> <!--Título página WEB-->
+    <title>Listar Alumnos</title> <!--Título página WEB-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 <body>
     <header th:include="~{../static/html/header.html}">
     </header>
     <section class="container col-12">
-        <a class="btn btn-primary" th:href="@{/usuario/crearUsuario}">Crear Usuario</a>
+        <a class="btn btn-primary" th:href="@{/alumno/crearAlumno}">Crear Alumno</a>
         <table class="Table">
         <thead>
         <tr>
             <th>ID</th>
-            <th>NOMBRE USUARIO</th>
-            <th>ROL</th>
+            <th>NOMBRES</th>
+            <th>APELLIDO PATERNO</th>
+            <th>APELLIDO MATERNO</th>
+            <th>CURSO</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="usuario: ${atributoListaUsuarios}">
-            <td th:text="${usuario.id}"></td>
-            <td th:text="${usuario.nombreUsuario}"></td>
-            <td th:text="${usuario.rol}"></td>
+        <tr th:each="alumno: ${atributoListaAlumnos}">
+            <td th:text="${alumno.id}"></td>
+            <td th:text="${alumno.nombres}"></td>
+            <td th:text="${alumno.apellido1}"></td>
+            <td th:text="${alumno.apellido2}"></td>
+            <td th:text="${alumno.cursoAsignado.nombreCurso}"></td>
             <td>
                 <div class="row m-4">
                     <div class="col-6">
-                        <form th:action="@{/usuario/editarUsuario/{id}(id=${usuario.id})}"
+                        <form th:action="@{/alumno/editarAlumno/{id}(id=${alumno.id})}"
                               method="get">
                             <button class="btn btn-warning" type="submit">EDITAR</button>
                         </form>
                     </div>
                     <div class="col-2">
-                        <form th:action="@{/usuario/eliminarUsuario/{id}(id=${usuario.id})}"
+                        <form th:action="@{/alumno/eliminarAlumno/{id}(id=${alumno.id})}"
                               method="post">
                             <button class="btn btn-danger" type="submit">ELIMINAR</button>
                         </form>

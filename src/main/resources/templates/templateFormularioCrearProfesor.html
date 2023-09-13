@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--Compatibilidad con Internet Explorer-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Para el Responsive en diferentes dispositivos-->
-    <title>Crear Usuarios</title> <!--Título página WEB-->
+    <title>Crear Profesores</title> <!--Título página WEB-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
@@ -14,27 +14,40 @@
 
 </header>
 <section class="container">
-    <h2 class="text-success"><strong>Crear Usuario</strong></h2>
-    <form th:action="@{/usuario/crearUsuario}" method="post">
+    <h2 class="text-success"><strong>Crear Profesor</strong></h2>
+    <form th:action="@{/profesor/crearProfesor}" method="post">
         <div>
-            <label for="nombreUsuario" class="form-label"> Nombre de Usuario:</label>
-            <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" required
-                   placeholder="Ingrese su Nombre">
+            <label for="nombres" class="form-label"> Nombres del Profesor:</label>
+            <input type="text" class="form-control" id="nombres" name="nombres" required
+                   placeholder="Ingrese nombres del profesor">
         </div>
         <div>
-            <label for="contrasena" class="form-label"> Ingrese Contraseña:</label>
-            <input type="password" class="form-control" id="contrasena" name="contrasena" required
-                   placeholder="Ingrese una Contraseña">
+            <label for="apellido1" class="form-label"> Apellido Paterno:</label>
+            <input type="text" class="form-control" id="apellido1" name="apellido1" required
+                   placeholder="Ingrese el apellido paterno">
         </div>
         <div>
+            <label for="apellido2" class="form-label"> Apellido Materno:</label>
+            <input type="text" class="form-control" id="apellido2" name="apellido2" required
+                   placeholder="Ingrese el apellido materno">
+        </div>
+        <div class="form-group">
+            <label for="listaCursos">Cursos Asignados</label>
+            <select class="form-control" id="listaCursos" name="listaCursos" multiple required>
+                <option th:each="curso : ${listaCursos}"
+                        th:value="${curso.id}"
+                        th:text="${curso.nombreCurso}"></option>
+            </select>
+        </div>
+        <!--<div>
             <label for="rol" class="form-label"> Seleccione Usuario</label>
             <select class="form-control" name="rol" id="rol" required>
                 <option value="Profesor">Profesor</option>
                 <option value="Alumno">Alumno</option>
                 <option value="Administrador">Administrador</option>
             </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Crear Usuario</button>
+        </div>-->
+        <button type="submit" class="btn btn-primary">Crear Profesor</button>
     </form>
 </section>
 

@@ -1,7 +1,9 @@
 package cl.awakelab.miprimerspringdiego.controller;
 
 import cl.awakelab.miprimerspringdiego.entity.Alumno;
+import cl.awakelab.miprimerspringdiego.entity.Curso;
 import cl.awakelab.miprimerspringdiego.service.IAlumnoService;
+import cl.awakelab.miprimerspringdiego.service.ICursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,8 @@ import java.util.List;
 public class AlumnoController {
     @Autowired
     IAlumnoService objAlumnoService;
+    @Autowired
+    ICursoService objCursoService;
     @GetMapping
     public String listarAlumnos(Model model){
         List<Alumno> listaAlumnos = objAlumnoService.listarAlumno();
@@ -21,7 +25,9 @@ public class AlumnoController {
         return "templateListarAlumnos";
     }
     @GetMapping("/crearAlumno")
-    public String mostrarFormularioCrearAlumno(){
+    public String mostrarFormularioCrearAlumno(Model model){
+        List<Curso> listaCursos = objCursoService.listarCurso();
+        model.addAttribute("listaCursos", listaCursos);
         return  "templateFormularioCrearAlumno";
     }
     @PostMapping("/crearAlumno")
@@ -43,7 +49,10 @@ public class AlumnoController {
             return "redirect:/alumno";
         }
 
+        List<Curso> listaCursos = objCursoService.listarCurso();
+
         model.addAttribute("alumno", alumno);
+        model.addAttribute("listaCursos", listaCursos);
         return "templateFormularioEditarAlumno";
     }
     @PostMapping("/editarAlumno/{id}")

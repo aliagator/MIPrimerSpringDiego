@@ -25,7 +25,7 @@ public class Alumno {
     @Column(length = 30)
     private String apellido2;
 
-    @ManyToOne(optional = false,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(optional = false,cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)//Con CascadeType.PERSIST, se mantendrá la relación entre Alumno y Curso, pero la eliminación del Alumno no afectará al Curso.
     @JoinColumn(name = "FK_Curso",nullable = false)
     private Curso cursoAsignado;
 }

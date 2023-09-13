@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--Compatibilidad con Internet Explorer-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Para el Responsive en diferentes dispositivos-->
-    <title>Crear Usuarios</title> <!--Título página WEB-->
+    <title>Crear Cursos</title> <!--Título página WEB-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
@@ -14,14 +14,14 @@
 
 </header>
 <section class="container">
-    <h2 class="text-success"><strong>Crear Usuario</strong></h2>
-    <form th:action="@{/usuario/crearUsuario}" method="post">
+    <h2 class="text-success"><strong>Crear Curso</strong></h2>
+    <form th:action="@{/curso/crearCurso}" method="post">
         <div>
-            <label for="nombreUsuario" class="form-label"> Nombre de Usuario:</label>
-            <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" required
-                   placeholder="Ingrese su Nombre">
+            <label for="nombreCurso" class="form-label"> Nombre del Curso</label>
+            <input type="text" class="form-control" id="nombreCurso" name="nombreCurso" required
+                   placeholder="Ingrese el nombre del curso">
         </div>
-        <div>
+        <!--<div>
             <label for="contrasena" class="form-label"> Ingrese Contraseña:</label>
             <input type="password" class="form-control" id="contrasena" name="contrasena" required
                    placeholder="Ingrese una Contraseña">
@@ -33,8 +33,8 @@
                 <option value="Alumno">Alumno</option>
                 <option value="Administrador">Administrador</option>
             </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Crear Usuario</button>
+        </div>-->
+        <button type="submit" class="btn btn-primary">Crear Curso</button>
     </form>
 </section>
 

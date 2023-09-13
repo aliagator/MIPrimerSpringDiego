@@ -26,7 +26,7 @@ public class Curso {
     private List<Profesor> listaProfesores;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cursoAsignado", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cursoAsignado", cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     private List<Alumno> listaAlumnos;
 
 
