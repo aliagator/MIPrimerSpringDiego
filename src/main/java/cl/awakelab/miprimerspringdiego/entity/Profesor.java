@@ -29,7 +29,7 @@ public class Profesor {
     @Column(length = 30)
     private String apellido2;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
     @JoinTable(name = "Curso_Profesor",
             joinColumns = @JoinColumn(name = "FK_Profesor", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "FK_Curso", nullable = false))

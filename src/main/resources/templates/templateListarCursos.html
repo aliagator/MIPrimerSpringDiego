@@ -17,12 +17,19 @@
         <tr>
             <th>ID</th>
             <th>NOMBRE CURSO</th>
+            <th>PROFESOR ASIGNADO</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="curso: ${atributoListaCursos}">
             <td th:text="${curso.id}"></td>
             <td th:text="${curso.nombreCurso}"></td>
+            <td>
+                <ul>
+                    <!-- Itera a través de la lista de cursos asignados -->
+                    <li th:each="profesor: ${curso.listaProfesores}" th:text="${profesor.nombres}"></li>
+                </ul>
+            </td>
             <td>
                 <div class="row m-4">
                     <div class="col-6">

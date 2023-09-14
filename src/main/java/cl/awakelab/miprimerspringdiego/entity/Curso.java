@@ -22,7 +22,7 @@ public class Curso {
     private String nombreCurso;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "listaCursos", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "listaCursos", cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     private List<Profesor> listaProfesores;
 
     @JsonIgnore
