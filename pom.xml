@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>cl.awakelab</groupId>
-    <artifactId>MIPrimerSpringDiego</artifactId>
+    <artifactId>MISegundoSpring</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>MIPrimerSpringDiego</name>
     <description>MIPrimerSpringDiego</description>
